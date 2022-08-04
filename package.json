@@ -4,11 +4,14 @@
   "private": true,
   "scripts": {
     "client:start": "react-scripts start",
+    "client:dev": "npm run client:start",
     "client:build": "react-scripts build",
     "client:test": "react-scripts test",
     "client:eject": "react-scripts eject",
-    "dev": "concurrently \"npm run client:start\" \"cd src-tauri/ && cargo tauri dev\"",
-    "prod": "concurrently \"npm run client:build\" \"cd src-tauri/ && cargo tauri build\""
+    "backend:dev": "cd src-tauri/ && cargo tauri dev",
+    "backend:build": "cd src-tauri/ && cargo tauri build",
+    "dev": "concurrently \"npm run client:start\" \"npm run backend:dev\"",
+    "build": "concurrently \"npm run client:build\" \"npm run backend:build\""
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
